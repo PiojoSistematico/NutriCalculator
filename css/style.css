@@ -25,6 +25,7 @@ body {
   min-height: 100vh; 
   color: white;
   background-color: black;
+  font-family: "Roboto", Helvetica, sans-serif
 }
 
 * {
