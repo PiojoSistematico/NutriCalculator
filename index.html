@@ -85,7 +85,7 @@
 				-->
 
 				<section>
-					<button id="submit">Calcular</button>
+					<button id="submitIMC">Calcular</button>
 				
 					<span id="imc-respuesta">IMC = ?</span>
 				</section>
@@ -97,13 +97,13 @@
 
 				<section class ="sections gender">
 					<label class="input-label">Genero</label>
-					<label for="contactChoice1"><input type="radio" id="contactChoice1" name="contact" value="Hombre">Hombre</label>
-					<label for="contactChoice2"><input type="radio" id="contactChoice2" name="contact" value="Mujer">Mujer</label>
+					<label for="genderTalla1"><input type="radio" id="genderTalla1" name="genderTalla" value="Hombre" checked>Hombre</label>
+					<label for="genderTalla2"><input type="radio" id="genderTalla2" name="genderTalla" value="Mujer">Mujer</label>
 				</section>
 
 				<section class ="sections">
 					<label for="edad" class="input-label">Edad (años)</label>
-					<input type="number" name="edad" class="edad" min="0" max="200" step="1" placeholder="45" required>
+					<input type="number" name="edad" class="edad" id="edadTalla" min="0" max="200" step="1" placeholder="45" required>
 				</section>
 
 				<section class ="sections">
@@ -127,12 +127,15 @@
 				</section>
 
 				<section>
-					<button id="submit-talla">Calcular</button>
-					<span id="tallaAlturaPierna">Talla (altura de pierna) = ?</span>
-					<span id="tallaLongitudAntebrazo">Talla (Longitud de antebrazo) = ?</span>
-					<span id="tallaAlturaTalonRodilla">Talla (Altura Talon-Rodilla) = ?</span>
-					<span id="tallaAlturaMaleoloRodilla">Talla (Altura Maleolo-Rodilla) = ?</span>
-					<span id="tallaPromedio">Talla (Promedio) = ?</span>
+					<button id="submitTalla">Calcular</button>
+				</section>
+
+				<section>
+					<p id="tallaAlturaPierna">Talla (altura de pierna) = ?</p>
+					<p id="tallaLongitudAntebrazo">Talla (Longitud de antebrazo) = ?</p>
+					<p id="tallaAlturaTalonRodilla">Talla (Altura Talon-Rodilla) = ?</p>
+					<p id="tallaAlturaMaleoloRodilla">Talla (Altura Maleolo-Rodilla) = ?</p>
+					<p id="tallaPromedio">Talla (Promedio) = ?</p>
 				</section>
 
 				
