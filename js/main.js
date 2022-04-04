@@ -54,7 +54,7 @@ function calculaIMC(e){
         riesgo = "Moderado";
       } else if(imc < 25) {
         clasificacion="Normal";
-        riesgo = " ";
+        riesgo = "Normal";
       } else if(imc < 30) {
         clasificacion="Sobrepeso";
         riesgo = "Incrementado";
@@ -122,11 +122,15 @@ function calculaPeso(e){
   const edadPeso = parseFloat(document.querySelector("#edadPeso").value);
   const alturaRodilla = parseFloat(document.querySelector("#alturaRodilla").value);
   const circunferenciaBraquial = parseFloat(document.querySelector("#circunferenciaBraquial").value);
+  const circunferenciaCarpio = parseFloat(document.querySelector("#circunferenciaCarpio").value);
   const talla = parseFloat(document.querySelector("#talla").value);
   
+  const r = (talla/circunferenciaCarpio)
+  console.log(r)
   let pesoARCB;
   let pesoIdealLorenz;
   let pesoEstructuraOsea;
+
 
   if(generoPeso == "Hombre"){
     pesoIdealLorenz = talla - 100 - ((talla-150)/4.0);
@@ -160,9 +164,43 @@ function calculaPeso(e){
     }
   }
 
-  pesoEstructuraOsea = 22.5*(talla/100)**2;
-
-  
+  if(generoPeso == "Hombre"){
+    if(edadPeso < 65.0){
+      if(r>10.4){
+        pesoEstructuraOsea = 20*(talla/100)**2;
+      } else if(r>9.6) {
+        pesoEstructuraOsea = 23*(talla/100)**2;
+      } else {
+        pesoEstructuraOsea = 25*(talla/100)**2;
+      }
+    } else {
+      if(r>10.4){
+        pesoEstructuraOsea = 23*(talla/100)**2;
+      } else if(r>9.6) {
+        pesoEstructuraOsea = 26*(talla/100)**2;
+      } else {
+        pesoEstructuraOsea = 28*(talla/100)**2;
+      }
+    }
+  } else {
+    if(edadPeso < 65.0){
+      if(r>11.0){
+        pesoEstructuraOsea = 20*(talla/100)**2;
+      } else if(r>10.1) {
+        pesoEstructuraOsea = 23*(talla/100)**2;
+      } else {
+        pesoEstructuraOsea = 25*(talla/100)**2;
+      }
+    } else {
+      if(r>11.0){
+        pesoEstructuraOsea = 23*(talla/100)**2;
+      } else if(r>10.1) {
+        pesoEstructuraOsea = 26*(talla/100)**2;
+      } else {
+        pesoEstructuraOsea = 28*(talla/100)**2;
+      }
+    }
+  }
 
   const pesoPromedio = (pesoARCB + pesoIdealLorenz + pesoEstructuraOsea)/3;
   

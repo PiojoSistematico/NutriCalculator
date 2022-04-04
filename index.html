@@ -24,12 +24,6 @@
 				<a href="#" class="nav-link" id="tag-prueba2" onclick="tabNavigation('tag-prueba2','fm-prueba2')">Talla</a>
 				<a href="#" class="nav-link" id="tag-prueba3" onclick="tabNavigation('tag-prueba3','fm-prueba3')">Peso</a>
 
-				<!--<li><button class="btn-nav btn-imc">IMC</button></li>
-				<li><button class="btn-nav btn-prueba2">Prueba 2</button></li>
-				<li><button class="btn-nav btn-prueba3">Prueba 3</button></li>
-				<li><button class="btn-nav btn-prueba4">Prueba 4</button></li>
-				<li><button class="btn-nav btn-prueba5">Prueba 5</button></li>-->
-
 			</nav>
 
 			<form id="fm-imc" class="fm" action="">
@@ -48,47 +42,9 @@
 					<label for="altura" class="input-label">Peso (kg)</label>
 					<input type="number" name="altura" id="peso" min="0" max="400" step="0.01" placeholder="70" required>
 				</section>
-				
-				<!--<label for="dropdown">Genero</label>
-				<select name="" id="dropdown">
-					<option value="value1">Hombre</option>
-					<option value="value2">Mujer</option>
-				</select>
-				
-				
-				<section class ="sections gender">
-					<label class="input-label">Genero</label>
-					<label for="contactChoice1"><input type="radio" id="contactChoice1" name="contact" value="Hombre">Hombre</label>
-					<label for="contactChoice2"><input type="radio" id="contactChoice2" name="contact" value="Mujer">Mujer</label>
-				</section>
-				-->
-				
-				<!--
-				<label for="dropdown-projects">What is your favorite feature of freeCodeCamp?</label>
-				<select name="" id="dropdown-projects">
-					<option value="value1">Challenges</option>
-					<option value="value2">Projects</option>
-					<option value="value3">Community</option>
-					<option value="value4">Open Source</option>
-				</select>
-
-				<label>What would you like to see improved? (Check all that apply)</label>
-				
-				<label><input type="checkbox" id="cbox1" value="checkbox1"> Front-end Projects</label>
-				<label><input type="checkbox" id="cbox2" value="checkbox2"> Back-end Projects</label>
-				<label><input type="checkbox" id="cbox3" value="checkbox3"> Data Visualization</label>
-				<label><input type="checkbox" id="cbox4" value="checkbox4"> Challenges</label>
-				<label><input type="checkbox" id="cbox5" value="checkbox5"> Open Source Community</label>
-				<label><input type="checkbox" id="cbox6" value="checkbox6"> Gitter help rooms</label>
-				<label><input type="checkbox" id="cbox7" value="checkbox7"> Videos</label>
-				<label><input type="checkbox" id="cbox8" value="checkbox8"> City Meetups</label>
-				<label><input type="checkbox" id="cbox9" value="checkbox9"> Wiki</label>
-				<label><input type="checkbox" id="cbox10" value="checkbox10"> Forum</label>
-				<label><input type="checkbox" id="cbox11" value="checkbox11"> Additional Courses</label>
-				-->
 
 				<section>
-					<button id="submitIMC">Calcular</button>
+					<button class="btn" id="submitIMC">Calcular</button>
 				</section>
 
 				<section>
@@ -134,7 +90,7 @@
 				</section>
 
 				<section>
-					<button id="submitTalla">Calcular</button>
+					<button class="btn" id="submitTalla">Calcular</button>
 				</section>
 
 				<section>
@@ -144,14 +100,6 @@
 					<p id="tallaAlturaMaleoloRodilla">Talla (Altura Maleolo-Rodilla) = ?</p>
 					<p id="tallaPromedio">Talla (Promedio) = ?</p>
 				</section>
-
-				
-				<!--<label for="dropdown">Genero</label>
-				<select name="" id="dropdown">
-					<option value="value1">Hombre</option>
-					<option value="value2">Mujer</option>
-				</select>
-				-->
 
 			</form>
 
@@ -185,12 +133,17 @@
 				</section>
 
 				<section class ="sections">
+					<label for="circunferenciaCarpio" class="input-label">Circunferencia del Carpio (cm)</label>
+					<input type="number" name="circunferenciaCarpio" id="circunferenciaCarpio" min="0" max="200" step="0.1" placeholder="60.0" required>
+				</section>
+
+				<section class ="sections">
 					<label for="talla" class="input-label">Talla (cm)</label>
 					<input type="number" name="talla" id="talla" min="0" max="300" step="0.1" placeholder="60.0" required>
 				</section>
 
 				<section>
-					<button id="submitPeso">Calcular</button>
+					<button class="btn" id="submitPeso">Calcular</button>
 				</section>
 
 				<section>
@@ -201,7 +154,6 @@
 				</section>
 
 			</form>
-
 
 		</main>
 
