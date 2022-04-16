@@ -18,6 +18,21 @@ function tabNavigation(tagClicked,formId) {
     document.getElementById(tagClicked).style.background = "rgba(72,61,139,1)";
 }
 
+function borraCampos(e) {
+  const formCollection = document.getElementsByClassName("fm");
+  for (let i = 0; i < formCollection.length; i++) {
+    formCollection[i].reset();
+  }
+}
+
+function cambiaEdad(e) {
+  let edad = parseFloat(e.target.value);
+  const edadCollection = document.getElementsByClassName("edad");
+  for (let i = 0; i < edadCollection.length; i++) {
+    edadCollection[i].value = edad;
+  }
+}
+
 function calculaIMC(e){
     
     e.preventDefault();
@@ -125,8 +140,7 @@ function calculaPeso(e){
   const circunferenciaCarpio = parseFloat(document.querySelector("#circunferenciaCarpio").value);
   const talla = parseFloat(document.querySelector("#talla").value);
   
-  const r = (talla/circunferenciaCarpio)
-  console.log(r)
+  const r = (talla/circunferenciaCarpio);
   let pesoARCB;
   let pesoIdealLorenz;
   let pesoEstructuraOsea;
@@ -214,7 +228,14 @@ function calculaPeso(e){
 const calcularIMC = document.querySelector("#submitIMC").addEventListener("click",calculaIMC);
 const calcularTalla = document.querySelector("#submitTalla").addEventListener("click",calculaTalla);
 const calcularPeso = document.querySelector("#submitPeso").addEventListener("click",calculaPeso);
+const borrarCampos = document.querySelector("#borrarCampos").addEventListener("click",borraCampos);
 
+const edadCollection = document.getElementsByClassName("edad");
+for (let i = 0; i < edadCollection.length; i++) {
+  edadCollection[i].addEventListener("change",cambiaEdad);
+}
+
+//const cambiarEdad = document.getElementsByClassName("edad").addEventListener("click",cambiaEdad);
 
 //document.getElementsByClassName("btn-imc").addEventListener("click",tabNavigation("form-imc"));
 //document.getElementsByClassName("btn-prueba2").addEventListener("click",tabNavigation("form-prueba2"));

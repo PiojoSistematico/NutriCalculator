@@ -37,14 +37,14 @@ main{
   margin: 0 auto;
   min-height: 100vh;
   width: 80%;
-  padding: 10vh 0;
 }
 
 nav {
   display: flex;
   justify-content: space-evenly;
   width: 100%;
-  min-height: 10vh;
+  min-height: 5vh;
+  padding-top: 10vh;
 }
 
 .fm {
@@ -52,7 +52,15 @@ nav {
   flex-direction: column;
   justify-content: space-evenly;
   background-color: darkslateblue;
-  min-height: 70vh;
+  min-height: 65vh;
+  padding-bottom: 10vh;
+}
+
+.static {
+  display: flex;
+  min-height: 5vh;
+  padding-top: 2.5vh;
+  justify-content: end;
 }
 
 .hidden {
@@ -86,9 +94,9 @@ a {
   /* border-top-left-radius: 30%;
   border-top-right-radius: 30%; */
   padding: 1vh 0;
-  height: 10vh;
   background-color: black;
   text-align: center;
+  justify-content: center;
   text-decoration: none;
   color: white;
 }
