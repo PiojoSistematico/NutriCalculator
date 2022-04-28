@@ -44,7 +44,7 @@ nav {
   justify-content: space-evenly;
   width: 100%;
   min-height: 5vh;
-  padding-top: 10vh;
+  padding-top: 5vh;
 }
 
 .fm {
@@ -52,15 +52,9 @@ nav {
   flex-direction: column;
   justify-content: space-evenly;
   background-color: darkslateblue;
-  min-height: 65vh;
-  padding-bottom: 10vh;
-}
-
-.static {
-  display: flex;
-  min-height: 5vh;
-  padding-top: 2.5vh;
-  justify-content: end;
+  min-height: 80vh;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
 }
 
 .hidden {
@@ -78,14 +72,15 @@ form {
 
 .sections {
   display: flex;
+  justify-content: flex-start;
 }
 
 label {
   display: flex;
   justify-content: flex-start;
-  flex-basis: 75%;
+  flex-basis: 65%;
 }
-input{
+input,span {
   width:15%;
 }
 
@@ -107,6 +102,10 @@ a {
   background-color: green;
   border: 0.5vh white solid;
   color: white;
+}
+
+.borrar{
+  background-color: red;
 }
 
 input[type="number"] {

@@ -19,10 +19,6 @@
 
 		<main>
 
-			<section class="static">
-				<button class="btn borrar" id="borrarCampos">Borrar</button>
-			</section>
-
 			<nav>
 				<a href="#" class="nav-link" id="tag-datos" onclick="tabNavigation('tag-datos','fm-datos')">Datos</a>
 				<a href="#" class="nav-link" id="tag-calculos" onclick="tabNavigation('tag-calculos','fm-calculos')">Cálculos</a>
@@ -32,21 +28,15 @@
 
 			<form id="fm-datos" class="fm" action="">
 
-				<section class ="sections">
+				<section class ="sections imc">
 					<label for="edad" class="input-label">Edad (años)</label>
-					<input type="number" name="edad" class="edad" id="edad" min="0" max="200" step="1" placeholder="45" required>
-				</section>
-
-				<section class ="sections">
+					<input type="number" name="edad" class="edad" id="edad" min="0" max="200" step="1">
 					<label for="peso" class="input-label">Altura (m)</label>
-					<input type="number" name="peso" id="altura" min="0" max="300" step="0.01" placeholder="1.65" required>
+					<input type="number" name="peso" id="altura" min="0" max="300" step="0.01">
+					<label for="altura" class="input-label">Peso (kg)</label>
+					<input type="number" name="altura" id="peso" min="0" max="400" step="0.01">
 				</section>
 				
-				<section class ="sections">
-					<label for="altura" class="input-label">Peso (kg)</label>
-					<input type="number" name="altura" id="peso" min="0" max="400" step="0.01" placeholder="70" required>
-				</section>
-
 				<section class ="sections gender">
 					<label class="input-label">Genero</label>
 					<label for="genderTalla1"><input type="radio" id="genderTalla1" name="genderTalla" value="Hombre" checked>Hombre</label>
@@ -60,73 +50,137 @@
 				</section>
 
 				<section class ="sections">
+					<label for="circunferenciaBraquial" class="input-label">Circunferencia Braquial (cm)</label>
+					<input type="number" name="circunferenciaBraquial" id="circunferenciaBraquial" min="0" max="200" step="0.1">
+				</section>
+
+				<section class ="sections">
+					<label for="pliegueTricepital" class="input-label">Pliegue tricepital (cm)</label>
+					<input type="number" name="pliegueTricepital" id="pliegueTricepital" min="0" max="200" step="0.1">
+				</section>
+
+				<section class ="sections">
+					<label for="circunferenciaCintura" class="input-label">Circunferencia Cintura (cm)</label>
+					<input type="number" name="circunferenciaBraquial" id="circunferenciaBraquial" min="0" max="200" step="0.1">
+				</section>
+
+				<section class ="sections">
+					<label for="circunferenciaCadera" class="input-label">Circunferencia Cadera (cm)</label>
+					<input type="number" name="circunferenciaBraquial" id="circunferenciaBraquial" min="0" max="200" step="0.1">
+				</section>
+
+				<section class ="sections">
+					<label for="pliegueSubescapular" class="input-label">Pliegue Subescapular (cm)</label>
+					<input type="number" name="pliegueSubescapular" id="pliegueSubescapular" min="0" max="200" step="0.1">
+				</section>
+
+				<section class ="sections">
+					<label for="pliegueSubescapular" class="input-label">Pliegue Subescapular (cm)</label>
+					<input type="number" name="pliegueSubescapular" id="pliegueSubescapular" min="0" max="200" step="0.1">
+				</section>
+
+				<section class ="sections">
+					<label for="pliegueSubescapular" class="input-label">Pliegue Subescapular (cm)</label>
+					<input type="number" name="pliegueSubescapular" id="pliegueSubescapular" min="0" max="200" step="0.1">
+				</section>
+
+				<section class ="sections">
 					<label for="largoBrazo" class="input-label">Largo de brazo (cm)</label>
-					<input type="number" name="largoBrazo" id="largoBrazo" min="0" max="200" step="0.1" placeholder="60.0" required>
+					<input type="number" name="largoBrazo" id="largoBrazo" min="0" max="200" step="0.1">
 				</section>
 
 				<section class ="sections">
 					<label for="longitudAntebrazo" class="input-label">Longitud de antebrazo (cm)</label>
-					<input type="number" name="longitudAntebrazo" id="longitudAntebrazo" min="0" max="100" step="0.1" placeholder="30.0" required>
+					<input type="number" name="longitudAntebrazo" id="longitudAntebrazo" min="0" max="100" step="0.1">
 				</section>
 
 				<section class ="sections">
 					<label for="alturaTalonRodilla" class="input-label">Longitud talon-rodilla (cm)</label>
-					<input type="number" name="alturaTalonRodilla" id="alturaTalonRodilla" min="0" max="100" step="0.1" placeholder="50.0" required>
+					<input type="number" name="alturaTalonRodilla" id="alturaTalonRodilla" min="0" max="100" step="0.1">
 				</section>
 				
 				<section class ="sections">
 					<label for="alturaMaleoloRodilla" class="input-label">Longitud Maleolo-rodilla (cm)</label>
-					<input type="number" name="alturaMaleoloRodilla" id="alturaMaleoloRodilla" min="0" max="100" step="0.1" placeholder="50.0" required>
+					<input type="number" name="alturaMaleoloRodilla" id="alturaMaleoloRodilla" min="0" max="100" step="0.1">
 				</section>
 				
 				<section class ="sections">
 					<label for="alturaRodilla" class="input-label">Altura de Rodilla (cm)</label>
-					<input type="number" name="alturaRodilla" id="alturaRodilla" min="0" max="200" step="0.1" placeholder="60.0" required>
-				</section>
-
-				<section class ="sections">
-					<label for="circunferenciaBraquial" class="input-label">Circunferencia Braquial (cm)</label>
-					<input type="number" name="circunferenciaBraquial" id="circunferenciaBraquial" min="0" max="200" step="0.1" placeholder="60.0" required>
+					<input type="number" name="alturaRodilla" id="alturaRodilla" min="0" max="200" step="0.1">
 				</section>
 
 				<section class ="sections">
 					<label for="circunferenciaCarpio" class="input-label">Circunferencia del Carpio (cm)</label>
-					<input type="number" name="circunferenciaCarpio" id="circunferenciaCarpio" min="0" max="200" step="0.1" placeholder="60.0" required>
+					<input type="number" name="circunferenciaCarpio" id="circunferenciaCarpio" min="0" max="200" step="0.1">
 				</section>
 
 				<section class ="sections">
 					<label for="talla" class="input-label">Talla (cm)</label>
-					<input type="number" name="talla" id="talla" min="0" max="300" step="0.1" placeholder="60.0" required>
+					<input type="number" name="talla" id="talla" min="0" max="300" step="0.1">
 				</section>
 
-
 				<section>
-					<button class="btn" id="submitIMC">Calcular</button>
+					<button class="btn" id="submit">Calcular</button>
+					<button class="btn borrar" id="borrarCampos">Borrar</button>
 				</section>
 
 			</form>
 
 			<form id="fm-calculos" class="fm hidden" action="">
 
-				<section>
-					<p id="imc-respuesta">IMC = ?</p>
-					<p id="imc-clasificacion">Clasificación = ?</p>
-					<p id="imc-riesgo">Riesgo = ?</p>
+				<section class="sections respuestas">
+					<label for="imc-respuesta" class="input-label">IMC = </label>
+					<span id="imc-respuesta" class="span-respuesta">Aers</span>
+				</section>
+				<section class="sections respuestas">
+					<label for="imc-clasificacion" class="input-label">Clasificación = </label>
+					<span id="imc-clasificacion" class="span-respuesta">Aers</span>
+				</section>
+				<section class="sections respuestas">
+					<label for="imc-riesgo" class="input-label">Riesgo = </label>
+					<span id="imc-riesgo" class="span-respuesta">Aers</span>
 				</section>
 
-				<section>
-					<p id="tallaLargoBrazo">Talla (altura de pierna) = ?</p>
-					<p id="tallaLongitudAntebrazo">Talla (Longitud de antebrazo) = ?</p>
-					<p id="tallaAlturaTalonRodilla">Talla (Altura Talon-Rodilla) = ?</p>
-					<p id="tallaAlturaMaleoloRodilla">Talla (Altura Maleolo-Rodilla) = ?</p>
-					<p id="tallaPromedio">Talla (Promedio) = ?</p>
+				<hr/>
+
+				<section class="sections respuestas">
+					<label for="tallaLargoBrazo" class="input-label">Talla (altura de pierna) = </label>
+					<span id="tallaLargoBrazo" class="span-respuesta">Aers</span>
+				</section>
+				<section class="sections respuestas">
+					<label for="tallaLongitudAntebrazo" class="input-label">Talla (Longitud de antebrazo) = </label>
+					<span id="tallaLongitudAntebrazo" class="span-respuesta">Aers</span>
+				</section>
+				<section class="sections respuestas">
+					<label for="tallaAlturaTalonRodilla" class="input-label">Talla (Altura Talon-Rodilla) = </label>
+					<span id="tallaAlturaTalonRodilla" class="span-respuesta">Aers</span>
+				</section>
+				<section class="sections respuestas">
+					<label for="tallaAlturaMaleoloRodilla" class="input-label">Talla (Altura Maleolo-Rodilla) = </label>
+					<span id="tallaAlturaMaleoloRodilla" class="span-respuesta">Aers</span>
+				</section>
+				<section class="sections respuestas">
+					<label for="tallaPromedio" class="input-label">Talla (Promedio) = </label>
+					<span id="tallaPromedio" class="span-respuesta">Aers</span>
 				</section>
 
-				<section>
-					<p id="pesoARCB">Peso (ARCB) = ?</p>
-					<p id="pesoIdealLorenz">Peso Ideal (Lorenz) = ?</p>
-					<p id="pesoEstructuraOsea">Peso Ideal (Estructura Osea) = ?</p>
-					<p id="pesoPromedio">Peso (Promedio) = ?</p>
+				<hr/>
+
+				<section class="sections respuestas">
+					<label for="pesoARCB" class="input-label">Peso (ARCB) = </label>
+					<span id="pesoARCB" class="span-respuesta">Aers</span>
+				</section>
+				<section class="sections respuestas">
+					<label for="pesoIdealLorenz" class="input-label">Peso Ideal (Lorenz) = </label>
+					<span id="pesoIdealLorenz" class="span-respuesta">Aers</span>
+				</section>
+				<section class="sections respuestas">
+					<label for="pesoEstructuraOsea" class="input-label">Peso Ideal (Estructura Osea) = </label>
+					<span id="pesoEstructuraOsea" class="span-respuesta">Aers</span>
+				</section>
+				<section class="sections respuestas">
+					<label for="pesoPromedio" class="input-label">Peso (Promedio) = </label>
+					<span id="pesoPromedio" class="span-respuesta">Aers</span>
 				</section>
 
 			</form>
