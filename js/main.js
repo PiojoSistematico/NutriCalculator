@@ -33,68 +33,195 @@ function borraCampos(e) {
 //  }
 //}
 
+function calculateIMC(peso,talla,edad) {
+  let imc = peso/talla**2
+  if(edad >= 65){
+    if(imc <= 23.0){
+      clasificacion="Enflaquecido";
+      riesgo = "Moderado";
+    } else if(imc < 28.0) {
+      clasificacion="Normal";
+      riesgo = " ";
+    } else if(imc < 32.0) {
+      clasificacion="Sobrepeso";
+      riesgo = "Incrementado";
+    } else {
+      clasificacion="Obesidad";
+      riesgo = "Severo";
+    }
+  } else{
+    if(imc <= 16.0){
+      clasificacion="Deficiencia Energética Grado 3";
+      riesgo = "Muy Severo";
+    } else if(imc < 17.0) {
+      clasificacion="Deficiencia Energética Grado 2";
+      riesgo = "Severo";
+    } else if(imc < 18.5) {
+      clasificacion="Deficiencia Energética Grado 1";
+      riesgo = "Moderado";
+    } else if(imc < 25) {
+      clasificacion="Normal";
+      riesgo = "Normal";
+    } else if(imc < 30) {
+      clasificacion="Sobrepeso";
+      riesgo = "Incrementado";
+    } else if(imc < 35) {
+      clasificacion="Obesidad Grado 1";
+      riesgo = "Moderado";
+    } else if(imc < 40) {
+      clasificacion="Obesidad Grado 2";
+      riesgo = "Severo";
+    } else {
+      clasificacion="Obesidad Grado 3";
+      riesgo = "Muy Severo";
+    }
+  }
+  return [imc,clasificacion,riesgo]
+}
+
+
+function calculaRCC(circunferenciaCintura,circunferenciaCadera,genero,edad){
+  let relacionCinturaCadera=circunferenciaCintura/circunferenciaCadera
+  let riesgoRCC
+  if(genero == "Hombre"){
+    if(edad <= 29){
+      if(relacionCinturaCadera <= 0.83){
+        riesgoRCC = "Bajo"
+      } else if(relacionCinturaCadera <= 0.88){
+        riesgoRCC = "Moderado"
+      } else if(relacionCinturaCadera <= 0.94){
+        riesgoRCC = "Alto"
+      } else {
+        riesgoRCC = "Muy Alto"
+      }
+    } else if(edad <= 39){
+      if(relacionCinturaCadera <= 0.84){
+        riesgoRCC = "Bajo"
+      } else if(relacionCinturaCadera <= 0.91){
+        riesgoRCC = "Moderado"
+      } else if(relacionCinturaCadera <= 0.96){
+        riesgoRCC = "Alto"
+      } else {
+        riesgoRCC = "Muy Alto"
+      }
+    } else if(edad <= 49){
+      if(relacionCinturaCadera <= 0.88){
+        riesgoRCC = "Bajo"
+      } else if(relacionCinturaCadera <= 0.95){
+        riesgoRCC = "Moderado"
+      } else if(relacionCinturaCadera <= 1.00){
+        riesgoRCC = "Alto"
+      } else {
+        riesgoRCC = "Muy Alto"
+      }
+    } else if(edad <= 59){
+      if(relacionCinturaCadera <= 0.90){
+        riesgoRCC = "Bajo"
+      } else if(relacionCinturaCadera <= 0.96){
+        riesgoRCC = "Moderado"
+      } else if(relacionCinturaCadera <= 1.02){
+        riesgoRCC = "Alto"
+      } else {
+        riesgoRCC = "Muy Alto"
+      }        
+    } else {
+      if(relacionCinturaCadera <= 0.91){
+        riesgoRCC = "Bajo"
+      } else if(relacionCinturaCadera <= 0.98){
+        riesgoRCC = "Moderado"
+      } else if(relacionCinturaCadera <= 1.03){
+        riesgoRCC = "Alto"
+      } else {
+        riesgoRCC = "Muy Alto"
+      }     
+    }
+  } else{
+    if(edad <= 29){
+      if(relacionCinturaCadera <= 0.71){
+        riesgoRCC = "Bajo"
+      } else if(relacionCinturaCadera <= 0.77){
+        riesgoRCC = "Moderado"
+      } else if(relacionCinturaCadera <= 0.82){
+        riesgoRCC = "Alto"
+      } else {
+        riesgoRCC = "Muy Alto"
+      }
+    } else if(edad <= 39){
+      if(relacionCinturaCadera <= 0.72){
+        riesgoRCC = "Bajo"
+      } else if(relacionCinturaCadera <= 0.78){
+        riesgoRCC = "Moderado"
+      } else if(relacionCinturaCadera <= 0.84){
+        riesgoRCC = "Alto"
+      } else {
+        riesgoRCC = "Muy Alto"
+      }
+    } else if(edad <= 49){
+      if(relacionCinturaCadera <= 0.73){
+        riesgoRCC = "Bajo"
+      } else if(relacionCinturaCadera <= 0.79){
+        riesgoRCC = "Moderado"
+      } else if(relacionCinturaCadera <= 0.87){
+        riesgoRCC = "Alto"
+      } else {
+        riesgoRCC = "Muy Alto"
+      }
+    } else if(edad <= 59){
+      if(relacionCinturaCadera <= 0.74){
+        riesgoRCC = "Bajo"
+      } else if(relacionCinturaCadera <= 0.81){
+        riesgoRCC = "Moderado"
+      } else if(relacionCinturaCadera <= 0.88){
+        riesgoRCC = "Alto"
+      } else {
+        riesgoRCC = "Muy Alto"
+      }        
+    } else {
+      if(relacionCinturaCadera <= 0.75){
+        riesgoRCC = "Bajo"
+      } else if(relacionCinturaCadera <= 0.83){
+        riesgoRCC = "Moderado"
+      } else if(relacionCinturaCadera <= 0.90){
+        riesgoRCC = "Alto"
+      } else {
+        riesgoRCC = "Muy Alto"
+      }     
+    }
+  }
+  return riesgoRCC
+}
+
 function calcula(e){
     
     e.preventDefault();
+
     let edad = parseFloat(document.querySelector("#edad").value);
-    let altura = parseFloat(document.querySelector("#altura").value);
+    let talla = parseFloat(document.querySelector("#talla").value);
     let peso = parseFloat(document.querySelector("#peso").value);
-    let imc = peso/altura**2;
-    let clasificacion;
-    let riesgo;
 
-    if(edad >= 65){
-      if(imc <= 23.0){
-        clasificacion="Enflaquecido";
-        riesgo = "Moderado";
-      } else if(imc < 28.0) {
-        clasificacion="Normal";
-        riesgo = " ";
-      } else if(imc < 32.0) {
-        clasificacion="Sobrepeso";
-        riesgo = "Incrementado";
-      } else {
-        clasificacion="Obesidad";
-        riesgo = "Severo";
-      }
-    } else{
-      if(imc <= 16.0){
-        clasificacion="Deficiencia Energética Grado 3";
-        riesgo = "Muy Severo";
-      } else if(imc < 17.0) {
-        clasificacion="Deficiencia Energética Grado 2";
-        riesgo = "Severo";
-      } else if(imc < 18.5) {
-        clasificacion="Deficiencia Energética Grado 1";
-        riesgo = "Moderado";
-      } else if(imc < 25) {
-        clasificacion="Normal";
-        riesgo = "Normal";
-      } else if(imc < 30) {
-        clasificacion="Sobrepeso";
-        riesgo = "Incrementado";
-      } else if(imc < 35) {
-        clasificacion="Obesidad Grado 1";
-        riesgo = "Moderado";
-      } else if(imc < 40) {
-        clasificacion="Obesidad Grado 2";
-        riesgo = "Severo";
-      } else {
-        clasificacion="Obesidad Grado 3";
-        riesgo = "Muy Severo";
-      }
-    }
-
-    document.getElementById("imc-respuesta").innerHTML = `${imc.toFixed(1)}`;
-    document.getElementById("imc-clasificacion").innerHTML = `${clasificacion}`;
-    document.getElementById("imc-riesgo").innerHTML = `${riesgo}`;
-
-    const generoTalla = document.querySelector('input[name="genderTalla"]:checked').value;
-    const edadTalla = parseFloat(document.querySelector("#edadTalla").value);
+    const genero = document.querySelector('input[name="gender"]:checked').value;
+    const raza = document.querySelector('input[name="raza"]:checked').value;
+  
     const largoBrazo = parseFloat(document.querySelector("#largoBrazo").value);
     const longitudAntebrazo = parseFloat(document.querySelector("#longitudAntebrazo").value);
     const alturaTalonRodilla = parseFloat(document.querySelector("#alturaTalonRodilla").value);
     const alturaMaleoloRodilla = parseFloat(document.querySelector("#alturaMaleoloRodilla").value);
+    const edadPeso = parseFloat(document.querySelector("#edadPeso").value);
+    const alturaRodilla = parseFloat(document.querySelector("#alturaRodilla").value);
+    const circunferenciaBraquial = parseFloat(document.querySelector("#circunferenciaBraquial").value);
+    const circunferenciaCarpio = parseFloat(document.querySelector("#circunferenciaCarpio").value);
+    //const talla = parseFloat(document.querySelector("#talla").value);
+
+
+    //IMC
+    let arrayIMC = calculateIMC(peso,talla,edad);
+    document.getElementById("imc-respuesta").innerHTML = `${arrayIMC[0].toFixed(1)}`;
+    document.getElementById("imc-clasificacion").innerHTML = `${arrayIMC[1]}`;
+    document.getElementById("imc-riesgo").innerHTML = `${arrayIMC[2]}`;
+
+    //Relacion Cintura Cadera (RCC)
+    let rcc = calculaRCC(circunferenciaCintura,circunferenciaCadera,genero,edad)
+    document.getElementById("rcc").innerHTML = `${rcc}`;
 
     let tallaLargoBrazo
     let tallaLongitudAntebrazo
@@ -121,22 +248,19 @@ function calcula(e){
     document.getElementById("tallaAlturaMaleoloRodilla").innerHTML = `${tallaAlturaMaleoloRodilla.toFixed(1)}`;
     document.getElementById("tallaPromedio").innerHTML = `${tallaPromedio.toFixed(1)}`;
 
-    const generoPeso = document.querySelector('input[name="genderPeso"]:checked').value;
-    const razaPeso = document.querySelector('input[name="razaPeso"]:checked').value;
-    const edadPeso = parseFloat(document.querySelector("#edadPeso").value);
-    const alturaRodilla = parseFloat(document.querySelector("#alturaRodilla").value);
-    const circunferenciaBraquial = parseFloat(document.querySelector("#circunferenciaBraquial").value);
-    const circunferenciaCarpio = parseFloat(document.querySelector("#circunferenciaCarpio").value);
-    const talla = parseFloat(document.querySelector("#talla").value);
+
     
     const r = (talla/circunferenciaCarpio);
     let pesoARCB;
     let pesoIdealLorenz;
     let pesoEstructuraOsea;
-
+    
+    
+    
 
     if(generoPeso == "Hombre"){
-      pesoIdealLorenz = talla - 100 - ((talla-150)/4.0);
+      pesoIdealLorenz = talla - 100 - (talla-150)/4.0 + (edadPeso-20)/4.0;
+      pesoIdealOB = 62.7 + 0.54*talla - 159.6;
       if(razaPeso == "Blanca"){
         if(edadPeso < 60.0){
           pesoARCB = 1.19*alturaRodilla + 3.21*circunferenciaBraquial - 86.82;
@@ -151,7 +275,8 @@ function calcula(e){
         }
       }
     } else {
-      pesoIdealLorenz = talla - 100 - ((talla-150)/2.5);
+      pesoIdealLorenz = talla - 100 - (talla-150)/2.5 + (edadPeso-20)/2.5;
+      pesoIdealOB = 54.0 + 0.54*talla - 152.0;
       if(razaPeso == "Blanca"){
         if(edadPeso < 60.0){
           pesoARCB = 1.01*alturaRodilla + 2.81*circunferenciaBraquial - 66.04;

@@ -53,8 +53,8 @@ nav {
   justify-content: space-evenly;
   background-color: darkslateblue;
   min-height: 80vh;
-  padding-top: 5vh;
-  padding-bottom: 5vh;
+  padding-top: 2.5vh;
+  padding-bottom: 2.5vh;
 }
 
 .hidden {
@@ -96,12 +96,18 @@ a {
   color: white;
 }
 
+.buttons{
+  display: flex;
+  justify-content: space-around;
+}
+
 .btn {
   width: 20%;
-  height: auto;
+  min-height: 4.5vh;
   background-color: green;
   border: 0.5vh white solid;
   color: white;
+  margin-top: 2.5vh;
 }
 
 .borrar{

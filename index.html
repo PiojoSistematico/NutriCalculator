@@ -32,21 +32,21 @@
 					<label for="edad" class="input-label">Edad (años)</label>
 					<input type="number" name="edad" class="edad" id="edad" min="0" max="200" step="1">
 					<label for="peso" class="input-label">Altura (m)</label>
-					<input type="number" name="peso" id="altura" min="0" max="300" step="0.01">
-					<label for="altura" class="input-label">Peso (kg)</label>
-					<input type="number" name="altura" id="peso" min="0" max="400" step="0.01">
+					<input type="number" name="peso" id="peso" min="0" max="300" step="0.01">
+					<label for="talla" class="input-label">Peso (kg)</label>
+					<input type="number" name="talla" id="talla" min="0" max="300" step="0.01">
 				</section>
 				
 				<section class ="sections gender">
 					<label class="input-label">Genero</label>
-					<label for="genderTalla1"><input type="radio" id="genderTalla1" name="genderTalla" value="Hombre" checked>Hombre</label>
-					<label for="genderTalla2"><input type="radio" id="genderTalla2" name="genderTalla" value="Mujer">Mujer</label>
+					<label for="gender1"><input type="radio" id="gender1" name="gender" value="Hombre" checked>Hombre</label>
+					<label for="gender2"><input type="radio" id="gender2" name="gender" value="Mujer">Mujer</label>
 				</section>
 
 				<section class ="sections gender">
 					<label class="input-label">Raza</label>
-					<label for="razaPeso1"><input type="radio" id="razaPeso1" name="razaPeso" value="Blanca" checked>Blanca</label>
-					<label for="razaPeso2"><input type="radio" id="razaPeso2" name="razaPeso" value="Negra">Negra</label>
+					<label for="raza1"><input type="radio" id="raza1" name="raza" value="Blanca" checked>Blanca</label>
+					<label for="raza2"><input type="radio" id="raza2" name="raza" value="Negra">Negra</label>
 				</section>
 
 				<section class ="sections">
@@ -119,11 +119,6 @@
 					<input type="number" name="talla" id="talla" min="0" max="300" step="0.1">
 				</section>
 
-				<section>
-					<button class="btn" id="submit">Calcular</button>
-					<button class="btn borrar" id="borrarCampos">Borrar</button>
-				</section>
-
 			</form>
 
 			<form id="fm-calculos" class="fm hidden" action="">
@@ -188,6 +183,11 @@
 			<form id="fm-prueba3" class="fm hidden" action="">
 			
 			</form>
+
+			<section class="buttons">
+				<button class="btn" id="submit">Calcular</button>
+				<button class="btn borrar" id="borrarCampos">Borrar</button>
+			</section>
 
 		</main>
 
