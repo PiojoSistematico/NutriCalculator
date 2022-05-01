@@ -28,13 +28,23 @@
 
 			<form id="fm-datos" class="fm" action="">
 
-				<section class ="sections imc">
+				<section class ="sections">
 					<label for="edad" class="input-label">Edad (años)</label>
 					<input type="number" name="edad" class="edad" id="edad" min="0" max="200" step="1">
-					<label for="peso" class="input-label">Altura (m)</label>
-					<input type="number" name="peso" id="peso" min="0" max="300" step="0.01">
-					<label for="talla" class="input-label">Peso (kg)</label>
+				</section>
+
+				<section class ="sections imc special">
+					<label for="talla" class="input-label">Talla (m)</label>
 					<input type="number" name="talla" id="talla" min="0" max="300" step="0.01">
+					<label for="talla1"><input type="radio" id="talla1" name="talla" value="Real" checked>Real</label>
+					<label for="talla2"><input type="radio" id="talla2" name="talla" value="Estimado">Estimado</label>
+				</section>
+
+				<section class ="sections imc special">
+					<label for="peso" class="input-label">Peso (Kg)</label>
+					<input type="number" name="peso" id="peso" min="0" max="300" step="0.01">
+					<label for="peso1"><input type="radio" id="peso1" name="peso" value="Real" checked>Real</label>
+					<label for="peso2"><input type="radio" id="peso2" name="peso" value="Estimado">Estimado</label>
 				</section>
 				
 				<section class ="sections gender">
@@ -114,26 +124,17 @@
 					<input type="number" name="circunferenciaCarpio" id="circunferenciaCarpio" min="0" max="200" step="0.1">
 				</section>
 
-				<section class ="sections">
-					<label for="talla" class="input-label">Talla (cm)</label>
-					<input type="number" name="talla" id="talla" min="0" max="300" step="0.1">
-				</section>
-
 			</form>
 
 			<form id="fm-calculos" class="fm hidden" action="">
 
 				<section class="sections respuestas">
-					<label for="imc-respuesta" class="input-label">IMC = </label>
-					<span id="imc-respuesta" class="span-respuesta">Aers</span>
-				</section>
-				<section class="sections respuestas">
-					<label for="imc-clasificacion" class="input-label">Clasificación = </label>
-					<span id="imc-clasificacion" class="span-respuesta">Aers</span>
-				</section>
-				<section class="sections respuestas">
-					<label for="imc-riesgo" class="input-label">Riesgo = </label>
-					<span id="imc-riesgo" class="span-respuesta">Aers</span>
+					<label for="imc-respuesta" class="label-imc">IMC = </label>
+					<span id="imc-respuesta" class="span-imc">Aers</span>
+					<label for="imc-clasificacion" class="label-clasificacion">Clasificación = </label>
+					<span id="imc-clasificacion" class="span-clasificacion">Aers</span>
+					<label for="imc-riesgo" class="label-riesgo">Riesgo = </label>
+					<span id="imc-riesgo" class="span-riesgo">Aers</span>
 				</section>
 
 				<hr/>

@@ -75,13 +75,23 @@ form {
   justify-content: flex-start;
 }
 
-label {
-  display: flex;
-  justify-content: flex-start;
-  flex-basis: 65%;
+.special {
+  justify-content: space-around;
 }
-input,span {
-  width:15%;
+
+.label-imc, .span-imc,.label-riesgo {
+  flex: 1 1 0;
+}
+.span-clasificacion, .label-clasificacion,.span-riesgo {
+  flex: 2 1 0;
+}
+
+input{
+  width: 15%;
+}
+
+label{
+  width: 65%;
 }
 
 a {
