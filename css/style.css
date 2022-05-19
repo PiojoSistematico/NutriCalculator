@@ -23,10 +23,10 @@
 
 body { 
   min-height: 100vh; 
-  color: white;
+  color: black;
   background-color: black;
   font-family: "Roboto", Helvetica, sans-serif;
-  font-size: 3vmin;
+  font-size: 2.8vmin;
 }
 
 * {
@@ -51,7 +51,7 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: darkslateblue;
+  background-color: lightgrey;
   min-height: 80vh;
   padding-top: 2.5vh;
   padding-bottom: 2.5vh;
@@ -79,10 +79,10 @@ form {
   justify-content: space-around;
 }
 
-.label-imc, .span-imc,.label-riesgo {
+.label-imc, .span-imc {
   flex: 1 1 0;
 }
-.span-clasificacion, .label-clasificacion,.span-riesgo {
+.span-clasificacion, .label-clasificacion,.span-riesgo,.label-riesgo {
   flex: 2 1 0;
 }
 
@@ -92,6 +92,10 @@ input{
 
 label{
   width: 65%;
+}
+
+p{
+  color:red;
 }
 
 a {
@@ -133,8 +137,6 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none;
 }
-
-
 
 /******************************************
 /* LAYOUT

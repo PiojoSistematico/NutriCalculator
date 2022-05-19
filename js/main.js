@@ -33,379 +33,403 @@ function borraCampos(e) {
 //  }
 //}
 
-function calculaIMC(peso,talla,edad) {
-  let imc = peso/talla**2
-  if(edad >= 65){
-    if(imc <= 23.0){
-      clasificacion="Enflaquecido";
-      riesgo = "Moderado";
-    } else if(imc < 28.0) {
-      clasificacion="Normal";
-      riesgo = " ";
-    } else if(imc < 32.0) {
-      clasificacion="Sobrepeso";
-      riesgo = "Incrementado";
-    } else {
-      clasificacion="Obesidad";
-      riesgo = "Severo";
+
+class Paciente {
+  constructor(peso,talla,edad,genero,circunferenciaCintura,circunferenciaCadera,circunferenciaPantorrilla,circunferenciaBrazo,circunferenciaCarpio,circunferenciaBraquial,alturaRodilla,pcse,longitudAntebrazo,largoBrazo,alturaMaleoloRodilla){
+    this.peso = peso;
+    this.talla = talla;
+    this.edad = edad;
+    this.genero = genero;
+    this.circunferenciaCintura = circunferenciaCintura;
+    this.circunferenciaCadera = circunferenciaCadera;
+    this.circunferenciaPantorrilla = circunferenciaPantorrilla;
+    this.circunferenciaBrazo = circunferenciaBrazo;
+    this.circunferenciaCarpio = circunferenciaCarpio;
+    this.circunferenciaBraquial = circunferenciaBraquial;
+    this.pcse = pcse;
+    this.alturaRodilla = alturaRodilla;
+    this.alturaMaleoloRodilla = alturaMaleoloRodilla;
+    this.longitudAntebrazo = longitudAntebrazo;
+    this.largoBrazo = largoBrazo;
+    this.pliegueTricepital = pliegueTricepital;
+    this.pliegueSubescapular = pliegueSubescapular;
+    this.pliegueBicipital = pliegueBicipital;
+  }
+
+  calculaIMC() {
+    let imc = this.peso/this.talla**2
+    let clasificacion,riesgo
+    if(this.edad >= 65){
+      if(imc <= 23.0){
+        clasificacion="Enflaquecido";
+        riesgo = "Moderado";
+      } else if(imc < 28.0) {
+        clasificacion="Normal";
+        riesgo = " ";
+      } else if(imc < 32.0) {
+        clasificacion="Sobrepeso";
+        riesgo = "Incrementado";
+      } else {
+        clasificacion="Obesidad";
+        riesgo = "Severo";
+      }
+    } else{
+      if(imc <= 16.0){
+        clasificacion="Deficiencia Energética Grado 3";
+        riesgo = "Muy Severo";
+      } else if(imc < 17.0) {
+        clasificacion="Deficiencia Energética Grado 2";
+        riesgo = "Severo";
+      } else if(imc < 18.5) {
+        clasificacion="Deficiencia Energética Grado 1";
+        riesgo = "Moderado";
+      } else if(imc < 25) {
+        clasificacion="Normal";
+        riesgo = "Normal";
+      } else if(imc < 30) {
+        clasificacion="Sobrepeso";
+        riesgo = "Incrementado";
+      } else if(imc < 35) {
+        clasificacion="Obesidad Grado 1";
+        riesgo = "Moderado";
+      } else if(imc < 40) {
+        clasificacion="Obesidad Grado 2";
+        riesgo = "Severo";
+      } else {
+        clasificacion="Obesidad Grado 3";
+        riesgo = "Muy Severo";
+      }
     }
-  } else{
-    if(imc <= 16.0){
-      clasificacion="Deficiencia Energética Grado 3";
-      riesgo = "Muy Severo";
-    } else if(imc < 17.0) {
-      clasificacion="Deficiencia Energética Grado 2";
-      riesgo = "Severo";
-    } else if(imc < 18.5) {
-      clasificacion="Deficiencia Energética Grado 1";
-      riesgo = "Moderado";
-    } else if(imc < 25) {
-      clasificacion="Normal";
-      riesgo = "Normal";
-    } else if(imc < 30) {
-      clasificacion="Sobrepeso";
-      riesgo = "Incrementado";
-    } else if(imc < 35) {
-      clasificacion="Obesidad Grado 1";
-      riesgo = "Moderado";
-    } else if(imc < 40) {
-      clasificacion="Obesidad Grado 2";
-      riesgo = "Severo";
+    return [imc,clasificacion,riesgo]
+  }
+
+
+  calculaRCC(){
+    let relacionCinturaCadera=this.circunferenciaCintura/this.circunferenciaCadera
+    let riesgoRCC
+    if(this.genero == "Hombre"){
+      if(this.edad <= 29){
+        if(relacionCinturaCadera <= 0.83){
+          riesgoRCC = "Bajo"
+        } else if(relacionCinturaCadera <= 0.88){
+          riesgoRCC = "Moderado"
+        } else if(relacionCinturaCadera <= 0.94){
+          riesgoRCC = "Alto"
+        } else {
+          riesgoRCC = "Muy Alto"
+        }
+      } else if(this.edad <= 39){
+        if(relacionCinturaCadera <= 0.84){
+          riesgoRCC = "Bajo"
+        } else if(relacionCinturaCadera <= 0.91){
+          riesgoRCC = "Moderado"
+        } else if(relacionCinturaCadera <= 0.96){
+          riesgoRCC = "Alto"
+        } else {
+          riesgoRCC = "Muy Alto"
+        }
+      } else if(this.edad <= 49){
+        if(relacionCinturaCadera <= 0.88){
+          riesgoRCC = "Bajo"
+        } else if(relacionCinturaCadera <= 0.95){
+          riesgoRCC = "Moderado"
+        } else if(relacionCinturaCadera <= 1.00){
+          riesgoRCC = "Alto"
+        } else {
+          riesgoRCC = "Muy Alto"
+        }
+      } else if(this.edad <= 59){
+        if(relacionCinturaCadera <= 0.90){
+          riesgoRCC = "Bajo"
+        } else if(relacionCinturaCadera <= 0.96){
+          riesgoRCC = "Moderado"
+        } else if(relacionCinturaCadera <= 1.02){
+          riesgoRCC = "Alto"
+        } else {
+          riesgoRCC = "Muy Alto"
+        }        
+      } else {
+        if(relacionCinturaCadera <= 0.91){
+          riesgoRCC = "Bajo"
+        } else if(relacionCinturaCadera <= 0.98){
+          riesgoRCC = "Moderado"
+        } else if(relacionCinturaCadera <= 1.03){
+          riesgoRCC = "Alto"
+        } else {
+          riesgoRCC = "Muy Alto"
+        }     
+      }
+    } else{
+      if(this.edad <= 29){
+        if(relacionCinturaCadera <= 0.71){
+          riesgoRCC = "Bajo"
+        } else if(relacionCinturaCadera <= 0.77){
+          riesgoRCC = "Moderado"
+        } else if(relacionCinturaCadera <= 0.82){
+          riesgoRCC = "Alto"
+        } else {
+          riesgoRCC = "Muy Alto"
+        }
+      } else if(this.edad <= 39){
+        if(relacionCinturaCadera <= 0.72){
+          riesgoRCC = "Bajo"
+        } else if(relacionCinturaCadera <= 0.78){
+          riesgoRCC = "Moderado"
+        } else if(relacionCinturaCadera <= 0.84){
+          riesgoRCC = "Alto"
+        } else {
+          riesgoRCC = "Muy Alto"
+        }
+      } else if(this.edad <= 49){
+        if(relacionCinturaCadera <= 0.73){
+          riesgoRCC = "Bajo"
+        } else if(relacionCinturaCadera <= 0.79){
+          riesgoRCC = "Moderado"
+        } else if(relacionCinturaCadera <= 0.87){
+          riesgoRCC = "Alto"
+        } else {
+          riesgoRCC = "Muy Alto"
+        }
+      } else if(this.edad <= 59){
+        if(relacionCinturaCadera <= 0.74){
+          riesgoRCC = "Bajo"
+        } else if(relacionCinturaCadera <= 0.81){
+          riesgoRCC = "Moderado"
+        } else if(relacionCinturaCadera <= 0.88){
+          riesgoRCC = "Alto"
+        } else {
+          riesgoRCC = "Muy Alto"
+        }        
+      } else {
+        if(relacionCinturaCadera <= 0.75){
+          riesgoRCC = "Bajo"
+        } else if(relacionCinturaCadera <= 0.83){
+          riesgoRCC = "Moderado"
+        } else if(relacionCinturaCadera <= 0.90){
+          riesgoRCC = "Alto"
+        } else {
+          riesgoRCC = "Muy Alto"
+        }     
+      }
+    }
+    return riesgoRCC
+  }
+
+  calculaPesoIdealOB() {
+    let pesoIdealOB
+    if(this.genero == "Hombre"){
+      pesoIdealOB = 62.7 + 0.54*talla - 159.6;
     } else {
-      clasificacion="Obesidad Grado 3";
-      riesgo = "Muy Severo";
+      pesoIdealOB = 54.0 + 0.54*talla - 152.0;
+    }
+    return pesoIdealOB
+  }
+
+  calculaPesoIdealLorentz(){
+    let pesoIdealLorenz
+    if(this.genero == "Hombre"){
+      pesoIdealLorenz = talla - 100 - (talla-150)/4.0 + (edad-20)/4.0;
+    } else {
+      pesoIdealLorenz = talla - 100 - (talla-150)/2.5 + (edad-20)/2.5;
+    }
+    return pesoIdealLorenz
+  }
+
+  calculaPesoEstimado(){
+    let pesoEstimado
+    if(this.edad >= 60.0) {
+      if(this.genero == "Hombre"){
+        pesoEstimado = 0.98*this.circunferenciaPantorrilla + 1.16*this.alturaRodilla + 0.37*this.pcse - 81.69;
+      } else {
+        pesoEstimado = 1.27*this.circunferenciaPantorrilla + 0.87*this.alturaRodilla + 0.40*this.pcse - 62.35;
+      }
+    } else {
+  
+    }
+    return pesoEstimado
+  }
+
+  calculaICT(){
+    let ict = this.circunferenciaCintura/this.talla
+    if(ict<0.50){
+      return "Riesgo Mínimo"
+    } else if(ict<0.54) {
+      return "Riesgo Moderado"
+    } else {
+      return "Riesgo Alto"
     }
   }
-  return [imc,clasificacion,riesgo]
-}
 
-
-function calculaRCC(circunferenciaCintura,circunferenciaCadera,genero,edad){
-  let relacionCinturaCadera=circunferenciaCintura/circunferenciaCadera
-  let riesgoRCC
-  if(genero == "Hombre"){
-    if(edad <= 29){
-      if(relacionCinturaCadera <= 0.83){
-        riesgoRCC = "Bajo"
-      } else if(relacionCinturaCadera <= 0.88){
-        riesgoRCC = "Moderado"
-      } else if(relacionCinturaCadera <= 0.94){
-        riesgoRCC = "Alto"
+  calculaTallaAR(){
+    let tallaAR
+    if(this.edad >= 60.0) {
+      if(this.genero == "Hombre"){
+        tallaAR = 2.02*alturaRodilla + 64.19 - 0.04*edad;
       } else {
-        riesgoRCC = "Muy Alto"
+        tallaAR = 1.83*alturaRodilla + 84.88 - 0.24*edad;
       }
-    } else if(edad <= 39){
-      if(relacionCinturaCadera <= 0.84){
-        riesgoRCC = "Bajo"
-      } else if(relacionCinturaCadera <= 0.91){
-        riesgoRCC = "Moderado"
-      } else if(relacionCinturaCadera <= 0.96){
-        riesgoRCC = "Alto"
-      } else {
-        riesgoRCC = "Muy Alto"
-      }
-    } else if(edad <= 49){
-      if(relacionCinturaCadera <= 0.88){
-        riesgoRCC = "Bajo"
-      } else if(relacionCinturaCadera <= 0.95){
-        riesgoRCC = "Moderado"
-      } else if(relacionCinturaCadera <= 1.00){
-        riesgoRCC = "Alto"
-      } else {
-        riesgoRCC = "Muy Alto"
-      }
-    } else if(edad <= 59){
-      if(relacionCinturaCadera <= 0.90){
-        riesgoRCC = "Bajo"
-      } else if(relacionCinturaCadera <= 0.96){
-        riesgoRCC = "Moderado"
-      } else if(relacionCinturaCadera <= 1.02){
-        riesgoRCC = "Alto"
-      } else {
-        riesgoRCC = "Muy Alto"
-      }        
     } else {
-      if(relacionCinturaCadera <= 0.91){
-        riesgoRCC = "Bajo"
-      } else if(relacionCinturaCadera <= 0.98){
-        riesgoRCC = "Moderado"
-      } else if(relacionCinturaCadera <= 1.03){
-        riesgoRCC = "Alto"
-      } else {
-        riesgoRCC = "Muy Alto"
-      }     
+  
     }
-  } else{
-    if(edad <= 29){
-      if(relacionCinturaCadera <= 0.71){
-        riesgoRCC = "Bajo"
-      } else if(relacionCinturaCadera <= 0.77){
-        riesgoRCC = "Moderado"
-      } else if(relacionCinturaCadera <= 0.82){
-        riesgoRCC = "Alto"
+    return tallaAR
+  }
+
+  calculaTallaLRM(){
+    let tallaLRM
+    if(this.edad >= 60.0) {
+      if(this.genero == "Hombre"){
+        tallaLRM = 1.121*longitudRodillaMaleolo + 119.6 - 0.117*edad;
       } else {
-        riesgoRCC = "Muy Alto"
+        tallaLRM = 1.263*longitudRodillaMaleolo + 107.7 - 0.159*edad;
       }
-    } else if(edad <= 39){
-      if(relacionCinturaCadera <= 0.72){
-        riesgoRCC = "Bajo"
-      } else if(relacionCinturaCadera <= 0.78){
-        riesgoRCC = "Moderado"
-      } else if(relacionCinturaCadera <= 0.84){
-        riesgoRCC = "Alto"
-      } else {
-        riesgoRCC = "Muy Alto"
-      }
-    } else if(edad <= 49){
-      if(relacionCinturaCadera <= 0.73){
-        riesgoRCC = "Bajo"
-      } else if(relacionCinturaCadera <= 0.79){
-        riesgoRCC = "Moderado"
-      } else if(relacionCinturaCadera <= 0.87){
-        riesgoRCC = "Alto"
-      } else {
-        riesgoRCC = "Muy Alto"
-      }
-    } else if(edad <= 59){
-      if(relacionCinturaCadera <= 0.74){
-        riesgoRCC = "Bajo"
-      } else if(relacionCinturaCadera <= 0.81){
-        riesgoRCC = "Moderado"
-      } else if(relacionCinturaCadera <= 0.88){
-        riesgoRCC = "Alto"
-      } else {
-        riesgoRCC = "Muy Alto"
-      }        
     } else {
-      if(relacionCinturaCadera <= 0.75){
-        riesgoRCC = "Bajo"
-      } else if(relacionCinturaCadera <= 0.83){
-        riesgoRCC = "Moderado"
-      } else if(relacionCinturaCadera <= 0.90){
-        riesgoRCC = "Alto"
+  
+    }
+    return tallaLRM
+  }
+
+  calculaTallaLA(){
+    if(this.edad > 65.0) {
+      if(this.longitudAntebrazo >= 32.0){
+        return (this.genero = "Hombre") ? 1.87 : 1.84
+      } else if (this.longitudAntebrazo >= 31.5) {
+        return (this.genero = "Hombre") ? 1.86 : 1.83
+      } else if (this.longitudAntebrazo >= 31.0) {
+        return (this.genero = "Hombre") ? 1.84 : 1.81
+      } else if (this.longitudAntebrazo >= 30.5) {
+        return (this.genero = "Hombre") ? 1.82 : 1.79
+      } else if (this.longitudAntebrazo >= 30.0) {
+        return (this.genero = "Hombre") ? 1.81 : 1.76
+      } else if (this.longitudAntebrazo >= 29.5) {
+        return (this.genero = "Hombre") ? 1.79 : 1.76
+      } else if (this.longitudAntebrazo >= 29.0) {
+        return (this.genero = "Hombre") ? 1.78 : 1.75
+      } else if (this.longitudAntebrazo >= 28.5) {
+        return (this.genero = "Hombre") ? 1.76 : 1.73
+      } else if (this.longitudAntebrazo >= 28.0) {
+        return (this.genero = "Hombre") ? 1.75 : 1.71
+      } else if (this.longitudAntebrazo >= 27.5) {
+        return (this.genero = "Hombre") ? 1.73 : 1.70
+      } else if (this.longitudAntebrazo >= 27.0) {
+        return (this.genero = "Hombre") ? 1.71 : 1.68
+      } else if (this.longitudAntebrazo >= 26.5) {
+        return (this.genero = "Hombre") ? 1.70 : 1.66
+      } else if (this.longitudAntebrazo >= 26.0) {
+        return (this.genero = "Hombre") ? 1.68 : 1.65
+      } else if (this.longitudAntebrazo >= 25.5) {
+        return (this.genero = "Hombre") ? 1.67 : 1.63
+      } else if (this.longitudAntebrazo >= 25.0) {
+        return (this.genero = "Hombre") ? 1.65 : 1.61
+      } else if (this.longitudAntebrazo >= 24.5) {
+        return (this.genero = "Hombre") ? 1.63: 1.60
+      } else if (this.longitudAntebrazo >= 24.0) {
+        return (this.genero = "Hombre") ? 1.62 : 1.58
+      } else if (this.longitudAntebrazo >= 23.5) {
+        return (this.genero = "Hombre") ? 1.60 : 1.56
+      } else if (this.longitudAntebrazo >= 23.0) {
+        return (this.genero = "Hombre") ? 1.59 : 1.55
+      } else if (this.longitudAntebrazo >= 22.5) {
+        return (this.genero = "Hombre") ? 1.57 : 1.53
+      } else if (this.longitudAntebrazo >= 22.0) {
+        return (this.genero = "Hombre") ? 1.56 : 1.52
+      } else if (this.longitudAntebrazo >= 21.5) {
+        return (this.genero = "Hombre") ? 1.54 : 1.50
+      } else if (this.longitudAntebrazo >= 21.0) {
+        return (this.genero = "Hombre") ? 1.52 : 1.48
+      } else if (this.longitudAntebrazo >= 20.5) {
+        return (this.genero = "Hombre") ? 1.51 : 1.47
+      } else if (this.longitudAntebrazo >= 20.0) {
+        return (this.genero = "Hombre") ? 1.49 : 1.45
+      } else if (this.longitudAntebrazo >= 19.5) {
+        return (this.genero = "Hombre") ? 1.48 : 1.44
+      } else if (this.longitudAntebrazo >= 19.0) {
+        return (this.genero = "Hombre") ? 1.46 : 1.42
       } else {
-        riesgoRCC = "Muy Alto"
-      }     
+        return (this.genero = "Hombre") ? 1.45 : 1.40
+      }
+    } else {
+  
     }
   }
-  return riesgoRCC
-}
 
-function calculaPesoIdealOB(talla,genero) {
-  let pesoIdealOB
-  if(genero == "Hombre"){
-    pesoIdealOB = 62.7 + 0.54*talla - 159.6;
-  } else {
-    pesoIdealOB = 54.0 + 0.54*talla - 152.0;
+  calculaTallaMB(){
+    return 2.0*this.largoBrazo;
   }
-  return pesoIdealOB
-}
 
-function calculaPesoIdealLorentz(genero,talla,edad){
-  let pesoIdealLorenz
-  if(genero == "Hombre"){
-    pesoIdealLorenz = talla - 100 - (talla-150)/4.0 + (edad-20)/4.0;
-  } else {
-    pesoIdealLorenz = talla - 100 - (talla-150)/2.5 + (edad-20)/2.5;
-  }
-  return pesoIdealLorenz
-}
-
-function calculaPesoEstimado(genero,circunferenciaPantorrilla,alturaRodilla,circunferenciaBrazo,PCSE,edad){
-  let pesoEstimado
-  if(edad >= 60.0) {
-    if(genero == "Hombre"){
-      pesoEstimado = 0.98*circunferenciaPantorrilla + 1.16*alturaRodilla + 0.37*PCSE - 81.69;
-    } else {
-      pesoEstimado = 1.27*circunferenciaPantorrilla + 0.87*alturaRodilla + 0.40*PCSE - 62.35;
-    }
-  } else {
-
-  }
-  return pesoEstimado
-} 
-
-function calculaICT(circunferenciaCintura,talla){
-  let ict = circunferenciaCintura/talla
-  if(ict<0.50){
-    return "Riesgo Mínimo"
-  } else if(ict<0.54) {
-    return "Riesgo Moderado"
-  } else {
-    return "Riesgo Alto"
-  }
-}
-
-function calculaTallaAR(edad,genero,alturaRodilla){
-  let tallaAR
-  if(edad >= 60.0) {
-    if(genero == "Hombre"){
-      tallaAR = 2.02*alturaRodilla + 64.19 - 0.04*edad;
-    } else {
-      tallaAR = 1.83*alturaRodilla + 84.88 - 0.24*edad;
-    }
-  } else {
-
-  }
-  return tallaAR
-}
-
-function calculaTallaLRM(edad,genero,longitudRodillaMaleolo){
-  let tallaLRM
-  if(edad >= 60.0) {
-    if(genero == "Hombre"){
-      tallaLRM = 1.121*longitudRodillaMaleolo + 119.6 - 0.117*edad;
-    } else {
-      tallaLRM = 1.263*longitudRodillaMaleolo + 107.7 - 0.159*edad;
-    }
-  } else {
-
-  }
-  return tallaLRM
-}
-
-function calculaTallaLA(edad,genero,longitudAntebrazo){
-  if(edad > 65.0) {
-    if(longitudAntebrazo >= 32.0){
-      return (genero = "Hombre") ? 1.87 : 1.84
-    } else if (longitudAntebrazo >= 31.5) {
-      return (genero = "Hombre") ? 1.86 : 1.83
-    } else if (longitudAntebrazo >= 31.0) {
-      return (genero = "Hombre") ? 1.84 : 1.81
-    } else if (longitudAntebrazo >= 30.5) {
-      return (genero = "Hombre") ? 1.82 : 1.79
-    } else if (longitudAntebrazo >= 30.0) {
-      return (genero = "Hombre") ? 1.81 : 1.76
-    } else if (longitudAntebrazo >= 29.5) {
-      return (genero = "Hombre") ? 1.79 : 1.76
-    } else if (longitudAntebrazo >= 29.0) {
-      return (genero = "Hombre") ? 1.78 : 1.75
-    } else if (longitudAntebrazo >= 28.5) {
-      return (genero = "Hombre") ? 1.76 : 1.73
-    } else if (longitudAntebrazo >= 28.0) {
-      return (genero = "Hombre") ? 1.75 : 1.71
-    } else if (longitudAntebrazo >= 27.5) {
-      return (genero = "Hombre") ? 1.73 : 1.70
-    } else if (longitudAntebrazo >= 27.0) {
-      return (genero = "Hombre") ? 1.71 : 1.68
-    } else if (longitudAntebrazo >= 26.5) {
-      return (genero = "Hombre") ? 1.70 : 1.66
-    } else if (longitudAntebrazo >= 26.0) {
-      return (genero = "Hombre") ? 1.68 : 1.65
-    } else if (longitudAntebrazo >= 25.5) {
-      return (genero = "Hombre") ? 1.67 : 1.63
-    } else if (longitudAntebrazo >= 25.0) {
-      return (genero = "Hombre") ? 1.65 : 1.61
-    } else if (longitudAntebrazo >= 24.5) {
-      return (genero = "Hombre") ? 1.63: 1.60
-    } else if (longitudAntebrazo >= 24.0) {
-      return (genero = "Hombre") ? 1.62 : 1.58
-    } else if (longitudAntebrazo >= 23.5) {
-      return (genero = "Hombre") ? 1.60 : 1.56
-    } else if (longitudAntebrazo >= 23.0) {
-      return (genero = "Hombre") ? 1.59 : 1.55
-    } else if (longitudAntebrazo >= 22.5) {
-      return (genero = "Hombre") ? 1.57 : 1.53
-    } else if (longitudAntebrazo >= 22.0) {
-      return (genero = "Hombre") ? 1.56 : 1.52
-    } else if (longitudAntebrazo >= 21.5) {
-      return (genero = "Hombre") ? 1.54 : 1.50
-    } else if (longitudAntebrazo >= 21.0) {
-      return (genero = "Hombre") ? 1.52 : 1.48
-    } else if (longitudAntebrazo >= 20.5) {
-      return (genero = "Hombre") ? 1.51 : 1.47
-    } else if (longitudAntebrazo >= 20.0) {
-      return (genero = "Hombre") ? 1.49 : 1.45
-    } else if (longitudAntebrazo >= 19.5) {
-      return (genero = "Hombre") ? 1.48 : 1.44
-    } else if (longitudAntebrazo >= 19.0) {
-      return (genero = "Hombre") ? 1.46 : 1.42
-    } else {
-      return (genero = "Hombre") ? 1.45 : 1.40
-    }
-  } else {
-
-  }
-}
-
-function calculaTallaMB(largoBrazo){
-  return 2.0*largoBrazo;
-}
-
-function calculaPesoEO(genero,talla,edad,circunferenciaCarpio) {
-  let pesoEstructuraOsea
-  let r = (talla/circunferenciaCarpio);
-  if(genero == "Hombre"){
-    if(edad < 65.0){
-      if(r>10.4){
-        pesoEstructuraOsea = 20*talla**2;
-      } else if(r>9.6) {
-        pesoEstructuraOsea = 23*talla**2;
+  
+  calculaPesoEO() {
+    let r = (this.talla/this.circunferenciaCarpio);
+    if(this.genero == "Hombre"){
+      if(this.edad < 65.0){
+        if(r>10.4){
+          return 20*this.talla**2;
+        } else if(r>9.6) {
+          return 23*this.talla**2;
+        } else {
+          return 25*this.talla**2;
+        }
       } else {
-        pesoEstructuraOsea = 25*talla**2;
+        if(r>10.4){
+          return 23*this.talla**2;
+        } else if(r>9.6) {
+          return 26*this.talla**2;
+        } else {
+          return 28*this.talla**2;
+        }
       }
     } else {
-      if(r>10.4){
-        pesoEstructuraOsea = 23*talla**2;
-      } else if(r>9.6) {
-        pesoEstructuraOsea = 26*talla**2;
+      if(this.edad < 65.0){
+        if(r>11.0){
+          return 20*this.talla**2;
+        } else if(r>10.1) {
+          return 23*this.talla**2;
+        } else {
+          return 25*this.talla**2;
+        }
       } else {
-        pesoEstructuraOsea = 28*talla**2;
-      }
-    }
-  } else {
-    if(edad < 65.0){
-      if(r>11.0){
-        pesoEstructuraOsea = 20*talla**2;
-      } else if(r>10.1) {
-        pesoEstructuraOsea = 23*talla**2;
-      } else {
-        pesoEstructuraOsea = 25*talla**2;
-      }
-    } else {
-      if(r>11.0){
-        pesoEstructuraOsea = 23*talla**2;
-      } else if(r>10.1) {
-        pesoEstructuraOsea = 26*talla**2;
-      } else {
-        pesoEstructuraOsea = 28*talla**2;
-      }
-    }
-  }
-}
-
-function calculaPesoARCB(genero,raza,edad,alturaRodilla,circunferenciaBraquial){
-  let pesoARCB
-  if(genero == "Hombre"){
-    if(raza == "Blanca"){
-      if(edad < 60.0){
-        pesoARCB = 1.19*alturaRodilla + 3.21*circunferenciaBraquial - 86.82;
-      } else{
-        pesoARCB = 1.10*alturaRodilla + 3.07*circunferenciaBraquial - 75.81;
-      }
-    } else {
-      if(edad < 60.0){
-        pesoARCB = 1.09*alturaRodilla + 3.14*circunferenciaBraquial - 83.72;
-      } else{
-        pesoARCB = 0.44*alturaRodilla + 2.86*circunferenciaBraquial - 39.21;
-      }
-    }
-  } else {
-    if(raza == "Blanca"){
-      if(edad < 60.0){
-        pesoARCB = 1.01*alturaRodilla + 2.81*circunferenciaBraquial - 66.04;
-      } else{
-        pesoARCB = 1.09*alturaRodilla + 2.68*circunferenciaBraquial - 65.51;
-      }
-    } else {
-      if(edad < 60.0){
-        pesoARCB = 1.24*alturaRodilla + 2.97*circunferenciaBraquial - 82.48;
-      } else{
-        pesoARCB = 1.50*alturaRodilla + 2.58*circunferenciaBraquial - 84.22;
+        if(r>11.0){
+          return 23*this.talla**2;
+        } else if(r>10.1) {
+          return 26*this.talla**2;
+        } else {
+          return 28*this.talla**2;
+        }
       }
     }
   }
-  return pesoARCB
+
+  calculaPesoARCB(){
+    if(this.genero == "Hombre"){
+      if(this.raza == "Blanca"){
+        if(this.edad < 60.0){
+          return 1.19*this.alturaRodilla + 3.21*this.circunferenciaBraquial - 86.82;
+        } else{
+          return 1.10*this.alturaRodilla + 3.07*this.circunferenciaBraquial - 75.81;
+        }
+      } else {
+        if(this.edad < 60.0){
+          return 1.09*this.alturaRodilla + 3.14*this.circunferenciaBraquial - 83.72;
+        } else{
+          return 0.44*this.alturaRodilla + 2.86*this.circunferenciaBraquial - 39.21;
+        }
+      }
+    } else {
+      if(this.raza == "Blanca"){
+        if(this.edad < 60.0){
+          return 1.01*this.alturaRodilla + 2.81*this.circunferenciaBraquial - 66.04;
+        } else{
+          return 1.09*this.alturaRodilla + 2.68*this.circunferenciaBraquial - 65.51;
+        }
+      } else {
+        if(this.edad < 60.0){
+          return 1.24*this.alturaRodilla + 2.97*this.circunferenciaBraquial - 82.48;
+        } else{
+          return 1.50*this.alturaRodilla + 2.58*this.circunferenciaBraquial - 84.22;
+        }
+      }
+    }
+  }
+  
 }
 
 
@@ -428,6 +452,8 @@ function calcula(e){
     const circunferenciaCarpio = parseFloat(document.querySelector("#circunferenciaCarpio").value);
     const circunferenciaCintura = parseFloat(document.querySelector("#circunferenciaCintura").value);
     const circunferenciaCadera = parseFloat(document.querySelector("#circunferenciaCadera").value);
+
+    const Juanito = new Paciente()
 
     //IMC
     let arrayIMC = calculaIMC(peso,talla,edad);
@@ -507,5 +533,6 @@ function calcula(e){
  */
 }
 
+document.getElementById('fechaActual').valueAsDate = new Date();
 const calcular = document.querySelector("#submit").addEventListener("click",calcula);
 const borrarCampos = document.querySelector("#borrarCampos").addEventListener("click",borraCampos);
